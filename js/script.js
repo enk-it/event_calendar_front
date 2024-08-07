@@ -1,10 +1,11 @@
-import {mark_event, unmark_event, activate, deactivate, set_text, clear_days} from "./elements.js";
+import {set_text_today, mark_event, unmark_event, mark_main, mark_secondary, set_text, clear_days} from "./elements.js";
 import {get_current_month_year, get_next_month_year, get_previous_month_year, get_month_days, get_calendar_ready} from "./date_time.js";
 
 function main() {
     const days = document.getElementsByClassName(
-        "day"
+        "cell"
     )
+
     clear_days(days)
 
 
@@ -26,20 +27,21 @@ function main() {
             next_month_days
         )
 
+    console.log(days)
     console.log(rendered_calendar)
 
 
-    for (let i = 0; i < rendered_calendar.length; i++) {
+    for (let i = 0; i < days.length; i++) {
         let current_day = rendered_calendar[i]
         let current_day_element = days[i]
 
         if (current_day.main === true) {
-
+            mark_main(current_day_element)
         }
         if (current_day.today === true) {
-
+            set_text_today(current_day_element, "Сегодня")
         }
-        activate(current_day_element)
+        // activate(current_day_element)
         set_text(current_day_element, current_day.date)
     }
 }
@@ -49,5 +51,6 @@ function main() {
 * написать метод который бы возвращал по месяцу-году (два числа) готовый календарь)
 */
 
+console.log("asdas")
 
 main()

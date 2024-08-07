@@ -7,7 +7,17 @@ const fix_weekday = (weekday) => {
     }
 }
 
-const get_today = () => {
+const get_today_year = () => {
+    const date = new Date()
+    return date.getFullYear()
+}
+
+const get_today_month = () => {
+    const date = new Date()
+    return date.getMonth()
+}
+
+const get_today_day = () => {
     const date = new Date()
     return date.getDate()
 }
@@ -72,9 +82,12 @@ export const get_month_days = ({month, year}) => {
 
 
 export const get_calendar_ready = (previous, current, next) => {
-    const today = get_today()
+    const today_day = get_today_day()
+    const today_month = get_today_month()
+    const today_year = get_today_year()
 
     var result = []
+
 
     // Если месяц начинается не с понедельника, то "потерянные" дни недели берём с предыдущего месяцв
     if (current[0].week_day !== 0) {
@@ -90,7 +103,7 @@ export const get_calendar_ready = (previous, current, next) => {
     for (let i = 0; i < current.length; i++){
         let temp = current[i]
         temp.main = true
-        if (temp.date == today) {
+        if (temp.date == today_day && temp.month == today_month && temp.year == today_year) {
             temp.today = true
         }
         else {
