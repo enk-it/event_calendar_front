@@ -6,98 +6,230 @@
     <link rel="stylesheet" href="./css/new_style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="calendar">
-            <div class="control">
-                <div class="option-container">
-                    <label>
-                        <select>
-                            <option value="1">Январь</option>
-                            <option value="2">Февраль</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="option-container">
-                    <label>
-                        <select>
-                            <option value="2024">2024</option>
-                            <option value="2023">2023</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="option-container">
-                <span>Сбросить</span>
-                </div>
+
+
+<div class="control-container">
+    <div class="control">
+        <label for="month">
+            <select class="drop-down" name="month" id="month">
+                <option value="">Январь</option>
+                <option value="">Февраль</option>
+            </select>
+        </label>
+    </div>
+
+    <div class="control">
+        <label for="year">
+            <select class="drop-down" name="year" id="year">
+                <option value="">2023</option>
+                <option value="">2024</option>
+            </select>
+        </label>
+    </div>
+
+    <div class="control">
+        <span class="reset">
+            Сбросить
+        </span>
+    </div>
+
+</div>
+<div class="calendar-container">
+    <div class="header">
+        <div class="weekday">Пн</div>
+        <div class="weekday">Вт</div>
+        <div class="weekday">Ср</div>
+        <div class="weekday">Чт</div>
+        <div class="weekday">Пт</div>
+        <div class="weekday">Сб</div>
+        <div class="weekday">Вс</div>
+    </div>
+    <div class="body">
+        <div class="row">
+            <div class="cell secondary event">
+                <div class="date">21</div>
+                <div class="text-today">Сегодня</div>
+                <div class="marker"></div>
             </div>
-            <div class="header">
-                <div class="weekday-label">Пн</div>
-                <div class="weekday-label">Вт</div>
-                <div class="weekday-label">Ср</div>
-                <div class="weekday-label">Чт</div>
-                <div class="weekday-label">Пт</div>
-                <div class="weekday-label">Сб</div>
-                <div class="weekday-label">Вс</div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
             </div>
-            <div class="rows-container">
-                <div class="row">
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                </div>
-                <div class="row">
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                </div>
-                <div class="row">
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                </div>
-                <div class="row">
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                </div>
-                <div class="row">
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                </div>
-                <div class="row">
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                </div>
+            <div class="cell main">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell main event">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
             </div>
         </div>
-        <div class="events">
+        <div class="row">
+            <div class="cell secondary event">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell main">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell main event">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
 
         </div>
+        <div class="row">
+            <div class="cell secondary event">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell main">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell main event">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell secondary event">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell main">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell main event">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell secondary event">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell main">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell main event">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell secondary event">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell main">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell main event">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+            <div class="cell secondary">
+                <div class="date">21</div>
+                <div class="marker"></div>
+            </div>
+        </div>
     </div>
+</div>
+
+
 </body>
 </html>
