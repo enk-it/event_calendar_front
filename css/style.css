@@ -101,9 +101,9 @@
   /*background: violet;*/
 }
 
-.calendar .day-cells .week-row .day{
-  transition: all .25s ease;
 
+
+.calendar .day-cells .week-row .day {
   width: 80px;
   height: 80px;
   display: flex;
@@ -111,13 +111,18 @@
   align-items: center;
   border-radius: 60px;
 }
-.calendar .day-cells .week-row .day:hover{
+
+
+.calendar .day-cells .week-row .day.active{
+  transition: all .25s ease;
+}
+.calendar .day-cells .week-row .day.active:hover{
   background: #e0d3c1;
 }
-.calendar .day-cells .week-row .day.event{
+.calendar .day-cells .week-row .day.active.event{
   background: #edc793;
 }
-.calendar .day-cells .week-row .day.event:hover{
+.calendar .day-cells .week-row .day.active.event:hover{
   background: #e0bc8b;
 }
 
