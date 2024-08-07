@@ -53,12 +53,12 @@
 .calendar .header .arrow {
   transition: all .25s ease;
 
-  width: 34px;
-  height: 34px;
+  width: 80px;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 16px;
+  border-radius: 80px;
 }
 
 .calendar .header .arrow:hover {

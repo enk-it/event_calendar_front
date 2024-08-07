@@ -1,119 +1,53 @@
-const mark_event = (day) => {
-    day.classList.add("event")
-}
+import {mark_event, unmark_event, activate, deactivate, set_text, clear_days} from "./elements.js";
+import {get_current_month_year, get_next_month_year, get_previous_month_year, get_month_days, get_calendar_ready} from "./date_time.js";
 
-const unmark_event = (day) => {
-    day.classList.remove("event")
-}
-
-const activate  = (day) => {
-    day.classList.add("active")
-}
-
-const deactivate  = (day) => {
-    day.classList.remove("active")
-}
-
-const set_text = (day, text) => {
-    day.innerHTML = text
-}
-
-const get_current_month = () => {
-
-}
-
-const get_today = () => {
-    const date = new Date('2024-01-31');
-    console.log(date);
-    console.log(date.getDay());
-    console.log(date.getDate());
-}
-
-
-const get_month_days = (year, month) => {
-    result = []
-
-    week_num = 0
-
-    for (let i = 1; i <= 31; i++) {
-        const date = new Date(
-            year.toString() + '-' +
-            month.toString() + '-' +
-            i.toString()
-        )
-
-        if (date.getDate() !== i) {
-            break
-        }
-
-        if (date.getDay() == 0){
-            week_num += 1
-        }
-
-        result.push(
-            {
-                weekday: date.getDay(),
-                date: date.getDate(),
-                week: week_num
-            }
-        )
-
-    }
-    console.log(result)
-    return result
-}
-
-const clear_days = (days) => {
-    for (let i = 0; i < days.length; i++){
-        unmark_event(days[i])
-        deactivate(days[i])
-        set_text(days[i], '')
-    }
-}
-
-
-const get_all_days = (year) => {
-    result = []
-    for (let i = 1; i <= 365; i++){
-        date = new Date(
-            year.toString() + '-01-' + i.toString()
-        )
-        console.log(date)
-    }
-}
-
-function main(){
+function main() {
     const days = document.getElementsByClassName(
         "day"
     )
-
     clear_days(days)
 
 
-    month_days = get_month_days(2024, 8)
+    const _current_my = get_current_month_year()
+    const current_my = get_next_month_year(_current_my)
 
-    for (i = 0; i < month_days.length; i++){
-        current_day = month_days[i]
-        current_day_element = days[7 * current_day.week + current_day.weekday - 1]
 
+
+    const next_my = get_next_month_year(current_my)
+    const previous_my = get_previous_month_year(current_my)
+
+    const previous_month_days = get_month_days(previous_my)
+    const current_month_days = get_month_days(current_my)
+    const next_month_days = get_month_days(next_my)
+
+    const rendered_calendar = get_calendar_ready(
+            previous_month_days,
+            current_month_days,
+            next_month_days
+        )
+
+    console.log(rendered_calendar)
+
+
+    for (let i = 0; i < rendered_calendar.length; i++) {
+        let current_day = rendered_calendar[i]
+        let current_day_element = days[i]
+
+        if (current_day.main === true) {
+
+        }
+        if (current_day.today === true) {
+
+        }
         activate(current_day_element)
         set_text(current_day_element, current_day.date)
     }
-
-
-/*
-* написать метод который бы возвращал текущий месяц-год (два числа)
-* написать метод который по паре месяц-год возвращал бы все дни месяца
-* написать метод который бы возвращал по месяцу-году (два числа) готовый календарь)
-* написать метод который по паре месяц-год возвращал бы следующую пару месяц-год (следующий месяц)
-* написать метод который по паре месяц-год возвращал бы предыдущую пару месяц-год (пред месяц)*/
-
-// alert(days.length)
-
-    console.log(days)
 }
 
-// get_all_days(2024)
-// get_today()
-get_month_days(2024, 2)
-// main()
+/*
+* написать метод который по паре месяц-год возвращал бы все дни месяца
+* написать метод который бы возвращал по месяцу-году (два числа) готовый календарь)
+*/
+
+
+main()
