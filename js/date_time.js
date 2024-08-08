@@ -113,14 +113,15 @@ export const get_calendar_ready = (previous, current, next) => {
     }
 
     // Если месяц оканчивается не на воскресенье, то "потерянные" дни недели берём с предыдущего месяцв
-    if (current[current.length - 1].week_day !== 6) {
-        for (let i = 0; i < 10 ; i++) {
+    // if (current[current.length - 1].week_day !== 6) {
+        for (let i = 0; i < 14 ; i++) {
             let temp = next[i]
             temp.main = false
             temp.today = false
             result.push(temp)
         }
-    }
+    // }
+
 
     return result
 }

@@ -131,7 +131,7 @@ body{
 }
 
 .calendar-container .body .row .cell.secondary:hover {
-    background: #000000;
+    background: #C1C1C1;
     color: #FFFFFF;
 }
 
@@ -146,11 +146,21 @@ body{
     color: #FFFFFF;
 }
 
-.calendar-container .body .row .cell.event .marker{
+
+.calendar-container .body .row .cell.event.main .marker{
     background: #000000;
 }
 
-.calendar-container .body .row .cell.event:hover .marker{
+.calendar-container .body .row .cell.event.main:hover .marker{
+    background: #FFFFFF;
+}
+
+
+.calendar-container .body .row .cell.event.secondary .marker{
+    background: #C1C1C1;
+}
+
+.calendar-container .body .row .cell.event.secondary:hover .marker{
     background: #FFFFFF;
 }
 
