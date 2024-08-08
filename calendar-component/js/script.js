@@ -1,6 +1,6 @@
 import {set_text_today, mark_event, unmark_event, mark_main, mark_secondary, set_text, clear_days} from "./elements.js";
 import {get_current_month_year, get_next_month_year, get_previous_month_year, get_month_days, get_calendar_ready} from "./date_time.js";
-
+import {fetch_events} from "./events.js";
 
 const days = document.getElementsByClassName(
     "cell"
@@ -83,4 +83,4 @@ function reset() {
 
 reset()
 
-const asd = "123"
+fetch_events()
