@@ -1,27 +1,54 @@
 body{
     background: #EDDFCC;
+    /*width: 412px;*/
 }
 
 
+.center-container {
+    width: 100%;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+}
 .calendar-component-container{
     user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+
+    width: 100%;
+    max-width: 550px;
+
 }
 
 .control-container{
     font-family: 'TildaSans',Arial,sans-serif;
     font-weight: 400;
     margin: 5px;
-    width: 450px;
+    /*width: 550px;*/
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+
+
 }
 
 .control-container .control{
-
     display: flex;
     align-items: center;
     justify-content: center;
+
+    width: 30%;
+    max-width: 168px;
+
+}
+
+.control-container .control label{
+    width: 100%;
 }
 
 .control-container .control .reset{
@@ -35,8 +62,8 @@ body{
 .control-container .control .drop-down {
     user-select: none;
     outline: none;
-    width: 168px;
     height: 40px;
+    width: 100%;
     background: #FFFFFF;
     border: 1px solid #C1C1C1;
     padding: 10px;
@@ -48,7 +75,8 @@ body{
     font-family: 'TildaSans',Arial,sans-serif;
     font-weight: 400;
     margin: 5px;
-    width: 550px;
+    /*width: 550px;*/
+    width: 100%;
     height: 400px;
     display: flex;
     flex-direction: column;
@@ -78,21 +106,21 @@ body{
     height: 650px;
     display: flex;
     flex-direction: column;
-    /*background: red;*/
 }
 
 .calendar-container .body .row {
     width: 100%;
     height: 100%;
-    /*background: green;*/
     display: flex;
     flex-direction: row;
 
 }
 
 .calendar-container .body .row .cell{
-    width: 100%;
-    height: 100%;
+    flex-shrink: 1;
+    flex-basis: 100px;
+    /*max-width: 100px;*/
+    /*width: 100%;*/
 
     display: flex;
     flex-direction: column;
@@ -104,12 +132,19 @@ body{
 }
 
 .calendar-container .body .row .cell .date{
-    margin: 5px 50px 5px 5px;
+    /*position: relative;*/
+    padding-left: 15px;
+    padding-top: 5px;
+    width: 100%;
+    /*right: 30px;*/
+    /*top: 5px;*/
+
 }
 
 .calendar-container .body .row .cell .marker {
     /*background: red;*/
-    width: 60px;
+    /*width: 60px;*/
+    width: 70%;
     height: 3px;
     margin: 5px 5px 8px;
     transition: all .25s ease;
