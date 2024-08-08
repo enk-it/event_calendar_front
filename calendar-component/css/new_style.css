@@ -1,6 +1,5 @@
 body{
     background: #EDDFCC;
-    /*width: 412px;*/
 }
 
 
@@ -108,7 +107,18 @@ body{
     flex-direction: column;
 }
 
+
 .calendar-container .body .row {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+.calendar-container .body .row .popup-trigger{
+    text-decoration: none;
     width: 100%;
     height: 100%;
     display: flex;
@@ -118,7 +128,7 @@ body{
 
 .calendar-container .body .row .cell{
     flex-shrink: 1;
-    flex-basis: 100px;
+    flex-basis: 100%;
     /*max-width: 100px;*/
     /*width: 100%;*/
 

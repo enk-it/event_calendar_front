@@ -82,3 +82,5 @@ function reset() {
 
 
 reset()
+
+const asd = "123"
