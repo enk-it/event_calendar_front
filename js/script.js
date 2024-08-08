@@ -50,9 +50,6 @@ function update_calendar(month_year) {
             next_month_days
         )
 
-    console.log(days)
-    console.log(rendered_calendar)
-
 
     for (let i = 0; i < days.length; i++) {
         let current_day = rendered_calendar[i]
