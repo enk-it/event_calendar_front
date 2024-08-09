@@ -1,39 +1,3 @@
-const mark_event = (day) => {day.classList.add("event")}
-const unmark_event = (day) => {day.classList.remove("event")}
-
-const mark_main  = (day) => {
-    day.classList.add("main")
-    day.classList.remove("secondary")
-}
-const mark_secondary  = (day) => {
-    day.classList.add("secondary")
-    day.classList.remove("main")
-}
-
-const set_text = (day, text) => {day.getElementsByClassName('date')[0].innerHTML = text}
-const set_date_attr = (day, date) => {day.setAttribute("data-calendar-date", date)}
-const set_text_today = (day, text) => {day.getElementsByClassName('extra-text')[0].innerHTML = text}
-const clear_days = (days) => {
-    for (let i = 0; i < days.length; i++){
-        mark_event(days[i])
-        mark_main(days[i])
-        set_text(days[i], '')
-    }
-}
-
-
-//######################################################################################################################
-
-
-const fix_weekday = (weekday) => {
-    if (weekday == 0) {
-        return 6
-    }
-    else {
-        return weekday - 1
-    }
-}
-
 const get_today_year = () => {
     const date = new Date()
     return date.getFullYear()
@@ -49,54 +13,70 @@ const get_today_day = () => {
     return date.getDate()
 }
 
-const get_current_month_year = () => {
-    const date = new Date()
-    return {month: date.getMonth(), year: date.getFullYear()}
+const fix_weekday = (weekday) => {
+    if (weekday == 0) {
+        return 6
+    }
+    else {
+        return weekday - 1
+    }
 }
 
-const get_next_month_year = ({month, year}) => {
+const get_current_month = () => {
+    return new Date(get_today_year(), get_today_month(), 1)
+}
+
+const get_next_month = (date) => {
+    const month = date.getMonth()
+    const year = date.getYear()
+
     if (month !== 11) {
-        return {month: month + 1, year: year}
+        const new_date = new Date(year, month + 1, 1)
+        return new_date
     }
     else {
-        return {month: 1, year: year + 1}
+        const new_date = new Date(year + 1, 0, 1)
+        return new_date
     }
 }
 
-const get_previous_month_year = ({month, year}) => {
+const get_previous_month = (date) => {
+    const month = date.getMonth()
+    const year = date.getYear()
+
     if (month !== 0) {
-        return {month: month - 1, year: year}
+        const new_date = new Date(year, month - 1, 1)
+        return new_date
     }
     else {
-        return {month: 11, year: year - 1}
+        const new_date = new Date(year - 1, 11, 1)
+        return new_date
     }
+
 }
 
-const get_month_days = ({month, year}) => {
+const get_month_days = (date) => {
+    const year = date.getFullYear()
+    const month = date.getMonth()
+
     var result = []
     var week_num = 0
 
-    for (let i = 1; i <= 31; i++) {
-        const date = new Date(
-            year.toString() + '-' +
-            (month + 1).toString() + '-' +
-            i.toString()
-        )
+    for (let day = 1; day <= 31; day++) {
+        const date = new Date(year, month, day)
 
-        if (date.getDate() !== i) {
+        if (date.getDate() !== day) {
             break
         }
 
-        let temp = {
-            date: date.getDate(),
-            month: month,
-            year: year,
-            week_num: week_num,
-            week_day: fix_weekday(date.getDay())
-        }
-
         result.push(
-            temp
+            {
+                date: day,
+                month: month,
+                year: year,
+                week_num: week_num,
+                week_day: fix_weekday(date.getDay())
+            }
         )
 
         if (date.getDay() === 0){
@@ -107,8 +87,7 @@ const get_month_days = ({month, year}) => {
     return result
 }
 
-
-const get_calendar_ready = (previous, current, next) => {
+const pack_calendar_list = (previous, current, next) => {
     const today_day = get_today_day()
     const today_month = get_today_month()
     const today_year = get_today_year()
@@ -151,148 +130,186 @@ const get_calendar_ready = (previous, current, next) => {
 }
 
 
-//######################################################################################################################
 
 
-const fetch_events = async () => {
-    const url = "http://localhost:8081/api/v1/events/";
+class DayCell {
+    constructor(
+        element,
+        index
+    ) {
+        this.element = element
+        this.index = index
 
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
+        this.element.addEventListener(
+            'click',
+            () => {
+                let date_clicked = this.element.getAttribute("data-calendar-date")
+                console.log(date_clicked)
+            }
+        )
+    }
+
+    set_event(flag){
+        if (flag) {
+            this.element.classList.add("event")
         }
-        const json = await response.json();
-        return json
-    } catch (error) {
-        console.error(error.message);
+        else {
+            this.element.classList.remove("event")
+        }
+    }
+
+    set_main(flag){
+        if (flag) {
+            this.element.classList.add("main")
+            this.element.classList.remove("secondary")
+        }
+        else {
+            this.element.classList.add("secondary")
+            this.element.classList.remove("main")
+        }
+    }
+
+    set_today(flag){
+        if (flag) {
+            this.element.getElementsByClassName('extra-text')[0].innerHTML = "Сегодня"
+        }
+        else {
+            this.element.getElementsByClassName('extra-text')[0].innerHTML = ""
+        }
+    }
+
+    set_date(text) {
+        this.element.getElementsByClassName('date')[0].innerHTML = text
+    }
+
+    set_date_attr(date) {
+        this.element.setAttribute("data-calendar-date", date)
     }
 
 
 }
-const save_events = () => {}
 
 
-const update_current_event = (date) => {
-    console.log(date)
-}
+class Calendar {
+    constructor(
+        month_select,
+        year_select,
+        reset_date,
+        day_cells
+    ) {
+        this.month_select = month_select
+        this.year_select = year_select
+        this.reset_date = reset_date
+        this.day_cells = day_cells
 
+        this.reset_date.addEventListener(
+            'click',
+            () => {this.reset()}
+        )
 
-//######################################################################################################################
+        this.month_select.addEventListener(
+            'change',
+            () =>
+            {
+                this.update_calendar(
+                    new Date(
+                        parseInt(this.year_select.value),
+                        parseInt(this.month_select.value),
+                        1
+                    )
+                )
+            }
+        )
 
+        this.year_select.addEventListener(
+            'change',
+            () =>
+            {
+                this.update_calendar(
+                    new Date(
+                        parseInt(this.year_select.value),
+                        parseInt(this.month_select.value),
+                        1
+                    )
+                )
+            }
+        )
 
-const add_leading_zero = (number) => {
-    if (number.length == 2) {
-        return number
+        this.reset()
+
     }
-    return '0' + number
 
-}
+    update_calendar(current_month) {
+        this.clear()
 
-async function main() {
-    function set_options ({month, year}) {
-        month_select.value = month.toString()
-        year_select.value = year.toString()
-    }
+        const next_month = get_next_month(current_month)
+        const previous_month = get_previous_month(current_month)
 
+        const previous_month_days = get_month_days(previous_month)
+        const current_month_days = get_month_days(current_month)
+        const next_month_days = get_month_days(next_month)
 
-    function update_calendar(month_year) {
-        clear_days(days)
-
-        const next_my = get_next_month_year(month_year)
-        const previous_my = get_previous_month_year(month_year)
-
-        const previous_month_days = get_month_days(previous_my)
-        const current_month_days = get_month_days(month_year)
-        const next_month_days = get_month_days(next_my)
-
-        const rendered_calendar = get_calendar_ready(
+        const total_calendar = pack_calendar_list(
             previous_month_days,
             current_month_days,
             next_month_days
         )
 
+        for (let i = 0; i < this.day_cells.length; i++) {
+            let current_day = total_calendar[i]
+            let current_cell = this.day_cells[i]
 
-        for (let i = 0; i < days.length; i++) {
-            let current_day = rendered_calendar[i]
-            let current_day_element = days[i]
-
-            set_date_attr(
-                current_day_element,
-                current_day.year.toString() + "-" +
-                add_leading_zero((current_day.month + 1).toString()) + "-" +
-                add_leading_zero(current_day.date.toString())
+            current_cell.set_date_attr(
+                `${current_day.year.toString()}-${(current_day.month + 1).toString()}-${current_day.date.toString()}`
             )
 
-            if (current_day.main === true) {
-                mark_main(current_day_element)
-            }
-            else {
-                mark_secondary(current_day_element)
-            }
-            if (current_day.today === true) {
-                set_text_today(current_day_element, "Сегодня")
-            }
-            else {
-                set_text_today(current_day_element, "")
-            }
-            // activate(current_day_element)
-            set_text(current_day_element, current_day.date)
+
+            current_cell.set_main(current_day.main)
+            current_cell.set_today(current_day.today)
+
+            current_cell.set_date(current_day.date)
+        }
+
+
+    }
+
+    update_selects(date) {
+        this.month_select.value = date.getMonth().toString()
+        this.year_select.value = date.getFullYear().toString()
+    }
+
+    reset() {
+        const today_month = get_current_month()
+        this.update_selects(today_month)
+        this.update_calendar(today_month)
+    }
+
+    clear() {
+        for (let i = 0; i < this.day_cells.length; i++){
+            this.day_cells[i].set_event(true)
+            this.day_cells[i].set_main(false)
+            this.day_cells[i].set_date("")
         }
     }
 
 
-    function reset() {
-        const current_my = get_current_month_year()
-        set_options(current_my)
-        update_calendar(current_my)
-    }
-
-    const days = document.getElementsByClassName(
-        "cell"
-    )
-
-    const month_select = document.getElementById("month")
-    const year_select = document.getElementById("year")
-    const reset_span = document.getElementById("reset")
-
-    reset_span.addEventListener('click', () => {reset()})
-    month_select.addEventListener('change', () => {
-        update_calendar(
-            {
-                month: parseInt(month_select.value),
-                year: parseInt(year_select.value)
-            }
-        )
-    })
-    year_select.addEventListener('change', () => {
-        update_calendar(
-            {
-                month: parseInt(month_select.value),
-                year: parseInt(year_select.value)
-            }
-        )
-    }
-    )
-
-
-
-    for (let i = 0; i < days.length; i++) {
-        days[i].addEventListener(
-            'click',
-            (e) => {
-                let date_clicked = days[i].getAttribute("data-calendar-date")
-                update_current_event(date_clicked)
-            }
-        )
-    }
-
-    reset()
-    let result = await fetch_events()
-    console.log(result)
 }
 
-main()
+let cell_elements = document.getElementsByClassName("cell")
+
+var day_cells = []
+
+for (let i = 0; i < cell_elements.length; i++) {
+    day_cells.push(
+        new DayCell(cell_elements[i], i)
+    )
+}
 
 
+let calendar = new Calendar(
+    document.getElementById("month"),
+    document.getElementById("year"),
+    document.getElementById("reset"),
+    day_cells
+)
 
