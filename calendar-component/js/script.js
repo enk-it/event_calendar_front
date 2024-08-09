@@ -28,7 +28,7 @@ const get_current_month = () => {
 
 const get_next_month = (date) => {
     const month = date.getMonth()
-    const year = date.getYear()
+    const year = date.getFullYear()
 
     if (month !== 11) {
         const new_date = new Date(year, month + 1, 1)
@@ -42,7 +42,7 @@ const get_next_month = (date) => {
 
 const get_previous_month = (date) => {
     const month = date.getMonth()
-    const year = date.getYear()
+    const year = date.getFullYear()
 
     if (month !== 0) {
         const new_date = new Date(year, month - 1, 1)
@@ -259,8 +259,13 @@ class Calendar {
             let current_day = total_calendar[i]
             let current_cell = this.day_cells[i]
 
+            let temp = `${current_day.year.toString()}-${(current_day.month + 1).toString()}-${current_day.date.toString()}`
+
+            // console.log(
+            //     temp
+            // )
             current_cell.set_date_attr(
-                `${current_day.year.toString()}-${(current_day.month + 1).toString()}-${current_day.date.toString()}`
+                temp
             )
 
 
