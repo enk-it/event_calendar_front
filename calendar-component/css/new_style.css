@@ -249,7 +249,7 @@ body{
 
 
 .popup-custom-calendar .info-block .popup-title {
-    margin: 10px;
+    margin: 22px 10px 10px;
     flex: 1;
     align-items: center;
 }
