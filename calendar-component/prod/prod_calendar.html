@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="./css/new_style.css">
-<meta charset="UTF-8">
-
 <div class="center-container">
     <div class="calendar-component-container">
         <div class="control-container">
@@ -364,29 +361,220 @@
 </div>
 
 
-<div class="center-container">
-    <div class="popup-custom-calendar">
-        <div class="info-block">
-            <div class="info-item popup-title">
-                <h3>
-                    Название акции
-                </h3>
-            </div>
-            <div class="info-item popup-body">
-                <img class="calendar-popup-image" src="data:image/jpeg;base64,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" align="left">
-                <p class="calendar-popup-text">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diem nonummy nibh
-                    euismod tincidunt ut lacreet dolore magna aliguam erat volutpat. Ut wisis enim
-                    ad minim veniam, quis nostrud exerci tution ullamcorper suscipit lobortis nisl
-                    ut aliquip ex ea commodo consequatLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diem nonummy nibh
-                    euismod tincidunt ut lacreet dolore magna aliguam erat volutpat. Ut wisis enim
-                    ad minim veniam, quis nostrud exerci tution ullamcorper suscipit lobortis nisl
-                    ut aliquip ex ea commodo consequ
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
+<style>
 
-<script type="module" src='./js/script.js'></script>
+    body{
+        background: #EDDFCC;
+    }
 
+    .center-container {
+        width: 100%;
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .calendar-component-container{
+        user-select: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 15px;
+
+        width: 100%;
+        max-width: 550px;
+
+    }
+
+    .control-container{
+        font-family: 'TildaSans',Arial,sans-serif;
+        font-weight: 400;
+        margin: 5px;
+        /*width: 550px;*/
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+
+    }
+
+    .control-container .control{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 30%;
+        max-width: 168px;
+
+    }
+
+    .control-container .control label{
+        width: 100%;
+    }
+
+    .control-container .control .reset{
+
+        color: #000000;
+        user-select: none;
+        cursor: pointer;
+
+    }
+
+    .control-container .control .drop-down {
+        user-select: none;
+        outline: none;
+        height: 40px;
+        width: 100%;
+        background: #FFFFFF;
+        border: 1px solid #C1C1C1;
+        padding: 10px;
+        align-items: center;
+        justify-self: end;
+    }
+
+    .calendar-container {
+        font-family: 'TildaSans',Arial,sans-serif;
+        font-weight: 400;
+        margin: 5px;
+        /*width: 550px;*/
+        width: 100%;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .calendar-container .header {
+        width: 100%;
+        height: 32px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .calendar-container .header .weekday {
+        color: #6E6962;
+        display: flex;
+        margin: 10px;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .calendar-container .body {
+        width: 100%;
+        height: 650px;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .calendar-container .body .row {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+
+    }
+
+
+    .calendar-container .body .row .popup-trigger{
+        text-decoration: none;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .calendar-container .body .row .cell{
+        flex-shrink: 1;
+        flex-basis: 100%;
+        /*max-width: 100px;*/
+        /*width: 100%;*/
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        border: 1px solid #C1C1C1;
+        transition: all .5s ease;
+    }
+
+    .calendar-container .body .row .cell .date{
+        /*position: relative;*/
+        padding-left: 15px;
+        padding-top: 5px;
+        width: 100%;
+        /*right: 30px;*/
+        /*top: 5px;*/
+
+    }
+
+    .calendar-container .body .row .cell .marker {
+        /*background: red;*/
+        /*width: 60px;*/
+        width: 70%;
+        height: 3px;
+        margin: 5px 5px 8px;
+        transition: all .5s ease;
+
+    }
+
+    .calendar-container .body .row .cell .extra-text {
+        font-size: 12px;
+        color: #000000;
+        transition: all .5s ease;
+
+    }
+
+
+
+    .calendar-container .body .row .cell.secondary {
+        background: #FFFFFF;
+        color: #C1C1C1;
+    }
+
+    .calendar-container .body .row .cell.secondary:hover {
+        background: #C1C1C1;
+        color: #FFFFFF;
+    }
+
+
+    .calendar-container .body .row .cell.main {
+        background: #FFFFFF;
+        color: #000000;
+    }
+
+    .calendar-container .body .row .cell.main:hover {
+        background: #000000;
+        color: #FFFFFF;
+    }
+
+
+    .calendar-container .body .row .cell.event.main .marker{
+        background: #000000;
+    }
+
+    .calendar-container .body .row .cell.event.main:hover .marker{
+        background: #FFFFFF;
+    }
+
+
+    .calendar-container .body .row .cell.event.secondary .marker{
+        background: #C1C1C1;
+    }
+
+    .calendar-container .body .row .cell.event.secondary:hover .marker{
+        background: #FFFFFF;
+    }
+
+    .calendar-container .body .row .cell:hover .extra-text{
+        color: #FFFFFF;
+    }
+</style>

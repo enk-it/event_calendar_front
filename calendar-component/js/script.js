@@ -1,5 +1,5 @@
 const fetch_events = async () => {
-    const url = "http://localhost:8081/api/v1/events/";
+    const url = "https://lakes.api.gladyshdd.ru/api/v1/events/";
     try {
         const response = await fetch(url);
         if (!response.ok) {

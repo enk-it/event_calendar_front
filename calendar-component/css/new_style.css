@@ -224,7 +224,6 @@ body{
 .popup-custom-calendar {
     width: 100%;
     height: 70vh;
-    background: red;
     display: flex;
     flex-direction: column;
 }
