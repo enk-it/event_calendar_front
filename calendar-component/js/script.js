@@ -377,7 +377,9 @@ class CalendarPopup {
     }
 
     show_no_events() {
-
+        this.update_title('В этот день нет событий')
+        this.update_body('')
+        this.update_image('https://icdn.lenta.ru/images/2021/10/21/11/20211021110546130/detail_516eb86fcde11535720cd3204f15ea31.jpeg')
     }
 
     update_title(title) {
