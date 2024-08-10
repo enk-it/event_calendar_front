@@ -11,6 +11,10 @@ body{
     align-items: center;
 
 }
+
+/**********************************************************************************************************************/
+
+
 .calendar-component-container{
     user-select: none;
     display: flex;
@@ -138,7 +142,7 @@ body{
     align-items: center;
 
     border: 1px solid #C1C1C1;
-    transition: all .25s ease;
+    transition: all .5s ease;
 }
 
 .calendar-container .body .row .cell .date{
@@ -157,14 +161,14 @@ body{
     width: 70%;
     height: 3px;
     margin: 5px 5px 8px;
-    transition: all .25s ease;
+    transition: all .5s ease;
 
 }
 
 .calendar-container .body .row .cell .extra-text {
     font-size: 12px;
     color: #000000;
-    transition: all .25s ease;
+    transition: all .5s ease;
 
 }
 
@@ -212,3 +216,87 @@ body{
 .calendar-container .body .row .cell:hover .extra-text{
     color: #FFFFFF;
 }
+
+/**********************************************************************************************************************/
+
+
+
+.popup-custom-calendar {
+    width: 100%;
+    height: 70vh;
+    background: red;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.popup-custom-calendar .info-block {
+    flex: 1;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.popup-custom-calendar .info-block .info-item  {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'TildaSans',Arial,sans-serif;
+}
+
+
+.popup-custom-calendar .info-block .popup-title {
+    margin: 10px;
+    flex: 1;
+    align-items: center;
+}
+
+.popup-custom-calendar .info-block .popup-body {
+    display: flex;
+    flex-direction: column;
+    flex: 10;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.popup-custom-calendar .info-block .popup-body .calendar-popup-text {
+    font-size: 1.2em;
+    margin: 20px;
+    width: 90%;
+}
+
+.popup-custom-calendar .info-block .popup-body .calendar-popup-image {
+    margin: 20px;
+    width: 90%;
+}
+
+
+@media (min-aspect-ratio: 4/3) {
+
+    .popup-custom-calendar .info-block .popup-body {
+        flex-direction: row;
+    }
+
+    .popup-custom-calendar .info-block .popup-body .calendar-popup-text {
+        width: auto;
+        height: 90%;
+    }
+
+    .popup-custom-calendar .info-block .popup-body .calendar-popup-image {
+        width: auto;
+        height: 90%;
+    }
+    
+}
+
+
+
+
+
+
+
+
